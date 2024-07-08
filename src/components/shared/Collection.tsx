@@ -67,7 +67,7 @@ export const Collection = ({
 const CardComponent = ({ image } : { image: IImage }) => {
   return (
     <li>
-      <Card className='collection-card'>
+      <Card className='collection-card static'>
         <CardContent>
           <Link href={`/transformations/${image._id}`}>
             <CldImage 
@@ -82,7 +82,7 @@ const CardComponent = ({ image } : { image: IImage }) => {
             />
           </Link>
         </CardContent>
-        <CardFooter className='flex-between'>
+        <CardFooter className='flex-between static'>
           <p className="p-20-semibold mr-3 line-clamp-1 text-priamry">
             {image.title}
           </p>
