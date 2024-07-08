@@ -1,58 +1,83 @@
-import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss"
 
-const config: Config = {
+const config = {
+  darkMode: ["class"],
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+	],
+  prefix: "",
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       colors: {
-        white: '#ffffff',
-        black: '#000000',
-        primary: '#343434',
-        secondary: '#E9EBF8',
+        border: "#343434",
+        input: "#343434",
+        ring: "#343434",
+        background: "#E9EBF8",
+        foreground: "#343434",
+        primary: {
+          DEFAULT: "#343434",
+          foreground: "#343434",
+        },
+        secondary: {
+          DEFAULT: "#E9EBF8",
+          foreground: "#E9EBF8",
+        },
+        destructive: {
+          DEFAULT: "#F45866",
+          foreground: "#F45866",
+        },
         success: '#58B09C',
-        danger: '#F45866',
         warning: '#F7EF99',
         info: '#4A60F0',
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
       },
-      spacing: {
-        xxxs: '4px',
-        xxs: '8px',
-        xs: '12px',
-        sm: '14px',
-        md: '18px',
-        lg: '24px',
-        xl: '32px',
-        xxl: '48px',
-        xxxl: '60px',
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
-      fontFamily: {
-        sans: ['Roboto Flex', 'sans-serif'],
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
       },
-      fontVariations: {
-        thin: { 'font-variation-settings': "'wght' 300" },
-        normal: { 'font-variation-settings': "'wght' 400" },
-        medium: { 'font-variation-settings': "'wght' 500" },
-        semibold: { 'font-variation-settings': "'wght' 600" },
-        bold: { 'font-variation-settings': "'wght' 700" },
-        extrabold: { 'font-variation-settings': "'wght' 800" },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
-    },
-    fontSize: {
-      xxs: ['8px', '14px'],
-      xs: ['10px', '16px'],
-      sm: ['12px', '18px'],
-      base: ['16px', '24px'],
-      md: ['20px', '28px'],
-      lg: ['24px', '32px'],
-      xl: ['32px', '40px'],
-      xxl: ['48px', '60px'],
-      xxxl: ['60px', '72px'],
     },
   },
-  plugins: [],
-};
-export default config;
+  plugins: [require("tailwindcss-animate")],
+} satisfies Config
+
+export default config
